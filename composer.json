@@ -1,0 +1,6 @@
+{
+    "require": {
+        "raveren/kint": "^1.1",
+        "phalcon/devtools": "^3.0"
+    }
+}
