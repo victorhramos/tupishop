@@ -80,5 +80,4 @@ class Config extends \Phalcon\Mvc\Model
     {
         return parent::findFirst($parameters);
     }
-
 }

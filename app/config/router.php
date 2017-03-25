@@ -1,7 +1,14 @@
 <?php
 
-$router = $di->getRouter();
+/**
+ * false to disable controller/action automatic route
+ */
+$router = $di->getRouter(false);
 
-// Define your routes here
+// Home
+$router->addGet('/', [
+    'controller' => 'index',
+    'action' => 'index'
+]);
 
 $router->handle();
