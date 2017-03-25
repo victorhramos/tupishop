@@ -82,7 +82,6 @@ class Address extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        // $this->setSchema("shop");
         $this->belongsTo('customerId', 'TupiShop\Model\Catalog\\Customer', 'customerId', ['alias' => 'Customer']);
     }
 

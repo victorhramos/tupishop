@@ -2,7 +2,7 @@
 
 namespace TupiShop\Model\Catalog;
 
-class CartProductOption extends \Phalcon\Mvc\Model
+class Config extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -10,31 +10,43 @@ class CartProductOption extends \Phalcon\Mvc\Model
      * @var integer
      * @Primary
      * @Identity
-     * @Column(type="integer", length=11, nullable=false)
+     * @Column(type="integer", length=10, nullable=false)
      */
-    public $cartProductOptionId;
+    public $configId;
 
     /**
      *
-     * @var integer
-     * @Column(type="integer", length=11, nullable=true)
+     * @var string
+     * @Column(type="string", length=255, nullable=true)
      */
-    public $optionValueId;
+    public $key;
 
     /**
      *
-     * @var integer
-     * @Column(type="integer", length=11, nullable=true)
+     * @var string
+     * @Column(type="string", nullable=true)
      */
-    public $cartProductId;
+    public $value;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=true)
+     */
+    public $createdAt;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=true)
+     */
+    public $updatedAt;
 
     /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->belongsTo('optionValueId', 'TupiShop\Model\Catalog\\ProductOptionValue', 'productOptionValueId', ['alias' => 'ProductOptionValue']);
-        $this->belongsTo('cartProductId', 'TupiShop\Model\Catalog\\CartProduct', 'cartProductId', ['alias' => 'CartProduct']);
     }
 
     /**
@@ -44,14 +56,14 @@ class CartProductOption extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'cart_product_option';
+        return 'config';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return CartProductOption[]|CartProductOption
+     * @return Config[]|Config
      */
     public static function find($parameters = null)
     {
@@ -62,7 +74,7 @@ class CartProductOption extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return CartProductOption
+     * @return Config
      */
     public static function findFirst($parameters = null)
     {

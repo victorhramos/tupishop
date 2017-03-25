@@ -40,7 +40,6 @@ class ProductPrice extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("shop");
         $this->belongsTo('productId', 'TupiShop\Model\Catalog\\Product', 'productId', ['alias' => 'Product']);
         $this->belongsTo('customerGroupId', 'TupiShop\Model\Catalog\\CustomerGroup', 'customerGroupId', ['alias' => 'CustomerGroup']);
     }
