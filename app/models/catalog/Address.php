@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\Model\Catalog;
+namespace TupiShop\Model\Catalog;
 
 class Address extends \Phalcon\Mvc\Model
 {
@@ -83,7 +83,7 @@ class Address extends \Phalcon\Mvc\Model
     public function initialize()
     {
         // $this->setSchema("shop");
-        $this->belongsTo('customerId', 'Shop\Model\Catalog\\Customer', 'customerId', ['alias' => 'Customer']);
+        $this->belongsTo('customerId', 'TupiShop\Model\Catalog\\Customer', 'customerId', ['alias' => 'Customer']);
     }
 
     /**

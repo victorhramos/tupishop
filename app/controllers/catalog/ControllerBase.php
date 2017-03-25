@@ -1,8 +1,8 @@
 <?php
-namespace Shop\Controller\Catalog;
+namespace TupiShop\Controller\Catalog;
 
 use Phalcon\Mvc\Controller;
-use Shop\Model\Catalog\Customer;
+use TupiShop\Model\Catalog\Customer;
 
 class ControllerBase extends Controller
 {
@@ -11,6 +11,7 @@ class ControllerBase extends Controller
     public function beforeExecuteRoute()
     {
         $this->setCustomer();
+        $this->setCart();
     }
 
     public function setCustomer()
@@ -22,5 +23,32 @@ class ControllerBase extends Controller
         }
 
         $this->customer = $customer;
+    }
+
+    public function setCart()
+    {
+        $cart = \TupiShop\Model\Catalog\Cart::findFirstBySessionId($this->session->getId());
+
+        if ($cart && $this->customer && $cart->customerId != $this->customer->customerId) {
+            $cart->customerId = $this->customer->customerId;
+        } elseif ($cart && !$this->customer) {
+            $cart->customerId = null;
+        } elseif (!$cart && $this->customer) {
+            $cart = new \TupiShop\Model\Catalog\Cart();
+            $cart->customerId = $this->customer->customerId;
+            $cart->sessionId = $this->session->getId();
+            $cart->createdAt = date('Y-m-d H:i:s');
+            $cart->updatedAt = date('Y-m-d H:i:s');
+        } elseif (!$cart && !$this->customer) {
+            $cart = new \TupiShop\Model\Catalog\Cart();
+            $cart->customerId = null;
+            $cart->sessionId = $this->session->getId();
+            $cart->createdAt = date('Y-m-d H:i:s');
+            $cart->updatedAt = date('Y-m-d H:i:s');
+        }
+
+        $cart->save();
+
+        $this->cart = $cart;
     }
 }

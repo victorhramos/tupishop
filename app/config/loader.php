@@ -12,12 +12,12 @@ $loader
             $config->application->libraryDir
     ])
     ->registerNamespaces([
-            "Shop\\Library" => $config->application->libraryDir,
-            "Shop\\Controller\\Catalog" => $config->application->controllersDir . '/catalog/',
-            "Shop\\Controller\\Backoffice" => $config->application->controllersDir . '/backoffice/',
-            "Shop\\Model\\Catalog" => $config->application->modelsDir . '/catalog/',
-            "Shop\\Model\\Backoffice" => $config->application->modelsDir . '/backoffice/',
-            "Shop\\Component" => $config->application->componentsDir,
+            "TupiShop\\Library" => $config->application->libraryDir,
+            "TupiShop\\Controller\\Catalog" => $config->application->controllersDir . '/catalog/',
+            "TupiShop\\Controller\\Backoffice" => $config->application->controllersDir . '/backoffice/',
+            "TupiShop\\Model\\Catalog" => $config->application->modelsDir . '/catalog/',
+            "TupiShop\\Model\\Backoffice" => $config->application->modelsDir . '/backoffice/',
+            "TupiShop\\Component" => $config->application->componentsDir,
     ])
     ->register();
 

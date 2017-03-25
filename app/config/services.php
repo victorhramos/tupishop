@@ -124,7 +124,7 @@ $di->set(
         $dispatcher = new Phalcon\Mvc\Dispatcher();
 
         $dispatcher->setDefaultNamespace(
-            "Shop\\Controller\\Catalog"
+            "TupiShop\\Controller\\Catalog"
         );
 
         return $dispatcher;

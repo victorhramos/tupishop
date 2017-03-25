@@ -12,7 +12,7 @@ $di->setShared('component', function () use ($di, $config) {
     $components = [];
     foreach ($files as $file) {
         if (is_file($file) && substr($file, -3, 3) == 'php') {
-            $class = '\\Shop\\Component\\' . str_replace('.php', '', basename($file));
+            $class = '\\TupiShop\\Component\\' . str_replace('.php', '', basename($file));
             $name = strtolower(str_replace(['Component', '.php'], '', basename($file)));
 
             $components[$name] = new $class();
