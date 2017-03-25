@@ -124,29 +124,25 @@ class Product extends \Phalcon\Mvc\Model
      */
     private function setPrice()
     {
-        $session = \Phalcon\Di::getDefault()->getSession();
+        $di = \Phalcon\Di::getDefault();
+        $session = $di->getSession();
         $customer = \TupiShop\Model\Catalog\Customer::findFirst($session->get('customer'));
 
+        $group = $di->getShared('storeConfig')->defaultCustomerGroup;
+
         if ($customer) {
-            // get price by customer group
-            $price = \TupiShop\Model\Catalog\ProductPrice::findFirst([
-                'productId = :p: and customerGroupId = :c:',
-                'bind' => [
-                    'p' => $this->productId,
-                    'c' => $customer->customer_group_id
-                ]
-            ]);
-
-            $this->price = $price->price;
-        } else {
-            // if not logged get the highest price
-            $price = \TupiShop\Model\Catalog\ProductPrice::maximum([
-                'column' => 'price',
-                'conditions' => 'productId = ' . $this->productId
-            ]);
-
-            $this->price = $price;
+            $group = $customer->customer_group_id;
         }
+
+        $price = \TupiShop\Model\Catalog\ProductPrice::findFirst([
+            'productId = :p: and customerGroupId = :c:',
+            'bind' => [
+                'p' => $this->productId,
+                'c' => $customer->customer_group_id
+            ]
+        ]);
+
+        $this->price = $price;
     }
 
 }
