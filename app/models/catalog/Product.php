@@ -50,8 +50,9 @@ class Product extends \Phalcon\Mvc\Model
     public $thumb;
 
     /**
-     * Dynamic ProductPrice
-     * @var decimal
+     * Dynamic Price by CustomerGroup
+     * @var double
+     * @Column(type="double", length=10, nullable=true)
      */
     public $price;
 
@@ -142,7 +143,7 @@ class Product extends \Phalcon\Mvc\Model
             ]
         ]);
 
-        $this->price = $price;
+        $this->price = $price->price;
     }
 
 }
