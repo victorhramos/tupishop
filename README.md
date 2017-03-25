@@ -19,8 +19,8 @@ Trust us, we tried several times! Anyone who works with the current platforms kn
 Please create a bug report if you think something needs improving / adding. As said before: we consider everything!
 
 ## Requirements
-- [Phalcon Extension 3.x](https://phalconphp.com/pt/download/linux)
-- [Phalcon DevTools 3.x](https://phalconphp.com/pt/download/tools) for cli (models and migration)
+- [Phalcon Extension 3.1.1](https://phalconphp.com/pt/download/linux) at least
+- [Phalcon DevTools](https://phalconphp.com/pt/download/tools) for cli (models and migration)
 - PHP 7.0 for better performance, but works as well with PHP 5.4+
 
 ## Why Phalcon Framework?
