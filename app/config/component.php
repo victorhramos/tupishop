@@ -4,9 +4,8 @@
  * Default Components
  */
 
-/**
- * Store Configurations
- */
+
+// Store Configurations
 $di->setShared('storeConfig', function () {
     $configs = \TupiShop\Model\Catalog\Config::find();
     $storeConfig = new stdClass();
@@ -18,9 +17,8 @@ $di->setShared('storeConfig', function () {
     return $storeConfig;
 });
 
-/**
- * Customer Component
- */
+
+// Customer Component
 $di->setShared('customer', function() use ($di){
     $session = $di->getSession();
 
@@ -33,6 +31,7 @@ $di->setShared('customer', function() use ($di){
     return $customer;
 });
 
+// Cart Component
 $di->setShared('cart', function() use ($di){
     $session = $di->getSession();
     $customer = \TupiShop\Model\Catalog\Customer::findFirst($session->get('customer'));
@@ -60,6 +59,26 @@ $di->setShared('cart', function() use ($di){
     $cart->save();
 
     return $cart;
+});
+
+// Theme Component
+$di->setShared('theme', function() use ($di){
+    $config = $di->getShared('storeConfig');
+    $theme = $config->theme;
+
+    $json = $di->getConfig()->application->viewsDir . 'catalog/template/' . $theme . '/config.json';
+    $json = json_decode(file_get_contents($json));
+
+    $tmp = new stdClass();
+    foreach ($json as $key => $value) {
+        $tmp->{$key} = $value;
+    }
+
+    // define the root Path
+    $tmp->rootPath = $di->getConfig()->application->viewsDir . 'catalog/template/' . $theme . '/';
+    $tmp->baseUri = 'catalog/template/' . $theme . '/';
+
+    return $tmp;
 });
 
 /*

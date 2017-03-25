@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+        <title>{{ title|default(this.storeConfig.storeName) }}</title>
+        <base href="{{ url(this.theme.baseUri) }}">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="Description" content="{{ metaDescription|default(this.storeConfig.metaDescription) }}"/>
+        <meta name="Keywords" content="{{ metaKeywords|default(this.storeConfig.metaKeywords) }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,700' rel='stylesheet' type='text/css'>
+        <link href="{{ url('css/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+        {% block css %}{% endblock %}
+
+        {{ partial(this.theme.rootPath ~ 'customize') }}
+    </head>
+
+    <body class="homepage3">
+        <div class="wrapper">
+            {{ partial(this.theme.rootPath ~ 'partials/layout-header') }}
+
+            {% block content %}{% endblock %}
+
+            {{ partial(this.theme.rootPath ~ 'partials/layout-footer') }}
+        </div>
+
+        <script src="{{ url('js/jquery-1.11.0.min.js') }}"></script>
+        <script src="{{ url('js/jquery-migrate-1.2.1.js') }}"></script>
+        <script src="{{ url('css/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url('js/script.js') }}"></script>
+
+        {% block js %}{% endblock %}
+    </body>
+</html>

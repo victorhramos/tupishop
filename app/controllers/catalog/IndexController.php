@@ -5,6 +5,7 @@ class IndexController extends ControllerBase
 {
     public function indexAction()
     {
-        // index controller
+        // $this->view->setMainView($this->mainView);
+        // $this->cart->addProduct(1, 2, [1,4]);
     }
 }

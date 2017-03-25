@@ -1,0 +1,44 @@
+<header>
+    <div class=" container">
+        <section class="style-one-header top-area">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="login-menu-holder ic-sm-user">
+						{% if this.customer %}
+							Bem vindo, {{ this.customer.firstname }}!
+							<a href="{{ url('logout') }}">Sair</a>
+						{% else %}
+							<a href="{{ url('login') }}">Login/Cadastro</a>
+						{% endif %}
+                    </div>
+                    <div class="hotline-holder ic-sm-phone">
+                        <label></label>
+                        <span>{{ this.storeConfig.storePhone }}</span>
+                    </div>
+                </div>
+                <div class="top-logo-holder col-sm-4 col-xs-12">
+
+                    <div class="top-logo">
+                        <a href="{{ url('/') }}"><img src="{{ this.storeConfig.logo }}" alt=""/></a>
+                    </div>
+
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="wish-cart-holder">
+                        <div class="top-cart-holder ic-sm-basket" id="mini-cart">
+							{{ partial(this.theme.rootPath ~ 'partials/header-minicart') }}
+                        </div>
+                        <div class="search-holder">
+                            <form action="" method="post">
+                                <input type="text" name="query" id="query" placeholder="Search" autocomplete="off" value="">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {# {{ partial('layout-navigation') }} #}
+
+    </div>
+</header> {# /Page Header #}

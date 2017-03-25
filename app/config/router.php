@@ -8,7 +8,8 @@ $router = $di->getRouter(false);
 // Home
 $router->addGet('/', [
     'controller' => 'index',
-    'action' => 'index'
+    'action' => 'index',
+    'template' => 'pages/home'
 ]);
 
 $router->handle();

@@ -164,9 +164,19 @@ class Cart extends \Phalcon\Mvc\Model
     {
         $total = 0;
         foreach ($this->CartProduct as $cp) {
-            $total += $cp->Product->price;
+            $total += $cp->Product->price * $cp->quantity;
         }
 
         return $total;
+    }
+
+    public function countItems()
+    {
+        $count = 0;
+        foreach ($this->CartProduct as $cp) {
+            $count += $cp->quantity;
+        }
+
+        return $count;
     }
 }

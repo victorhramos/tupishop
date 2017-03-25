@@ -1,0 +1,126 @@
+#loading-indicator {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#loading-indicator span {
+    display: block;
+    width: 10em;
+    margin: 0 auto;
+    font-family: Ubuntu, sans-serif;
+    text-align: center;
+    line-height: 1.4em;
+    background: silver;
+    background: rgba(192, 192, 192, 0.75);
+    color: white;
+    border-radius: 0 0 3px 3px;
+}
+
+
+/* LemonStand shortcode embed default visuals */
+
+
+/* Embed error messages */
+
+.ls.embed .error {
+    margin: 5px 0;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #a94442;
+    background-color: #f2dede;
+    display: inline-block;
+    border-color: #ebccd1;
+}
+
+
+/* Add a box to an embed */
+
+.ls.box {
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #aaa;
+}
+
+.ls.embed.right {
+    float: right;
+}
+
+.ls.embed.left {
+    float: left;
+}
+
+.ls.embed.c2 {
+    width: 49.5%;
+}
+
+.ls.embed.c3 {
+    width: 32.5%;
+}
+
+.ls.embed.c4 {
+    width: 23.5%;
+}
+
+.ls.embed var, var.ls.embed {
+    font-style: normal;
+}
+
+
+/* Product block embed default visuals */
+
+.ls.embed.product-block {
+    position: relative;
+    border: 1px solid #aaa;
+    width: 220px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.ls.embed.product-block h2 {
+    margin: 0 0 .5em;
+}
+
+.ls.embed.product-block var {
+    display: block;
+    font-style: normal;
+}
+
+.ls.embed.product-block figure {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.ls.embed.product-block var.base-price {
+    position: absolute;
+    right: .5em;
+    top: .5em;
+}
+
+.ls.embed.product-block button, .ls.embed.product-block .btn {
+    float: right;
+    margin: .5em 0 0;
+}
+
+.ls.embed.product-block var.on-sale-price {
+    float: right;
+    margin-bottom: .5em;
+    margin-top: -1em;
+}
+
+.ls.embed.product-block var.stock-amount::after {
+    content: ' left in stock';
+}
+
+.ls.embed.product-block var.on-sale-price::before {}
+
+.ls.embed.product-block var.on-sale {
+    color: hsl(0, 90%, 65%);
+    font-size: 15px;
+    text-decoration: line-through;
+    text-decoration: white double line-through;
+}

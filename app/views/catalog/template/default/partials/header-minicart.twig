@@ -1,0 +1,27 @@
+<a href="{{ url('/cart') }}">Carrinho</a>:
+<span class="top-cart-price">{{ this.cart.getTotal() }}</span>
+<div class="total-buble">
+    <span>{{ this.cart.countItems() }}</span>
+</div>
+
+{% if this.cart.Products|length %}
+    <div class="hover-holder">
+        <ul class="basket-items ">
+            {% for item in this.cart.CartProduct %}
+                <li class="row">
+                    <div class="thumb col-xs-3">
+                        <img width="45" height="45" alt="" src="{{ item.Product.thumb }}"/>
+                    </div>
+                    <div class="body col-xs-9">
+                        <h5>{{ item.Product.name }}</h5>
+                        <div class="price">
+                            <span>{{ item.Product.price * item.quantity }}</span>
+                        </div>
+                        <a class="remove-item" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart" data-ajax-extra-fields="delete_item='{{ item.key }}'">x</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="top-chk-out md-button" href="{{ url('/cart') }}">check out</a>
+    </div>
+{% endif %}
